@@ -29,18 +29,11 @@ function create(req, res) {
     })
 }
 
-// function show(req, res) {
-//     Flight.findById(req.params.id, function(err, flight) {
-//         console.log(flight)
-//         res.render('flights/show', {title: 'Flight Details', flight})
-//     })
-// }
-
 function show(req, res) {
     Flight.findById(req.params.id, function(err, flight) {
         console.log('CONSOLE LOG: ', req.params.id)
-        // Ticket.find({flight: flight._id}, function(err, tickets) {
-            res.render('flights/show', {title: 'Flight Details', flight})
-        // })
+        Ticket.find({flight: flight._id}, function(err, tickets) {
+            res.render('flights/show', {title: 'Flight Details', flight, tickets})
+        })
     })
 }
