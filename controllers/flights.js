@@ -17,8 +17,6 @@ function newMovie(req, res) {
 }
 
 function create(req, res) {
-    req.body.airline = req.body.airline.trim()
-    req.body.airport = req.body.airport.trim()
     req.body.flightNo = parseInt(req.body.flightNo)
 
     const flight = new Flight(req.body)
