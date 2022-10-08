@@ -3,7 +3,7 @@ const Ticket = require('../models/ticket')
 
 module.exports = {
     index,
-    new: newMovie,
+    new: newFlight,
     create,
     show,
 }
@@ -14,7 +14,7 @@ function index(req, res) {
     });
 }
 
-function newMovie(req, res) {
+function newFlight(req, res) {
     res.render('flights/new', {title: 'Add Flight'})
 }
 
@@ -29,17 +29,18 @@ function create(req, res) {
     })
 }
 
-function show(req, res) {
-    Flight.findById(req.params.id)
-        .exec(function(err, flight) {
-            res.render('flights/show', {title: 'Flight Details', flight})
-        })
-}
+// function show(req, res) {
+//     Flight.findById(req.params.id, function(err, flight) {
+//         console.log(flight)
+//         res.render('flights/show', {title: 'Flight Details', flight})
+//     })
+// }
 
 function show(req, res) {
     Flight.findById(req.params.id, function(err, flight) {
-        Ticket.find({flight: flight._id}, function(err, tickets) {
-            res.render('flights/show', {title: 'Flight Details', flight, tickets})
-        })
+        console.log('CONSOLE LOG: ', req.params.id)
+        // Ticket.find({flight: flight._id}, function(err, tickets) {
+            res.render('flights/show', {title: 'Flight Details', flight})
+        // })
     })
 }
