@@ -4,6 +4,7 @@ module.exports = {
     index,
     new: newMovie,
     create,
+    show,
 }
 
 function index(req, res) {
@@ -25,4 +26,11 @@ function create(req, res) {
         console.log(flight)
         res.redirect('/flights/new')
     })
+}
+
+function show(req, res) {
+    Flight.findById(req.params.id)
+        .exec(function(err, flight) {
+            res.render('flights/show', {title: 'Flight Details', flight})
+        })
 }
