@@ -9,6 +9,26 @@
   <div><%= flight.flightNo %></div>
   <div>Departure: </div>
   <div><%= flight.departs %></div>
+  <div>Destinations: </div>
+    <ol>
+        <%- flight.destinations.map(d => `<li>${d.airport} ${d.arrival}</li>`) %>
+    </ol>
 </section>
+
+<form id="add-destination-form" method="POST" action="/flights/<%= flight._id %>/destinations">
+    <label>Airport:</label>
+    <select name="airport">
+        <option>AUS</option>
+        <option>DFW</option>
+        <option>DEN</option>
+        <option>LAX</option>
+        <option>SAN</option>
+    </select>
+
+    <label>Arrival:</label>
+    <input type="datetime-local" name="arrival">
+
+    <input type="submit" value="Add Destination">
+  </form>
 
 <%- include('../partials/footer') %>
