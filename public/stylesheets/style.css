@@ -131,3 +131,8 @@ ul {
 li {
   font-weight: bold;
 }
+
+label span {
+  color: lightsteelblue;
+  font-size: 5px;
+}
